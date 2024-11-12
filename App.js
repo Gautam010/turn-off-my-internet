@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { Button, View } from "react-native";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
-export default function App() {
+const Example = () => {
+  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+
+  const showTimePicker = () => {
+    setTimePickerVisibility(true);
+  };
+
+  const hideTimePicker = () => {
+    setTimePickerVisibility(false);
+  };
+
+  const handleConfirm = (time) => {
+    console.warn("A time has been picked: ", time);
+    hideTimePicker();
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{flex:1,justifyContent: "center",alignItems: "center" }}>
+      <Button title="Set Time to turn of mobile data" onPress={showTimePicker}/>
+      <DateTimePickerModal
+        isVisible={isTimePickerVisible}
+        mode="time"
+        onConfirm={handleConfirm}
+        onCancel={hideTimePicker}
+      />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default Example;
