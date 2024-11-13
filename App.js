@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, View } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
@@ -14,7 +14,7 @@ const Example = () => {
   };
 
   const handleConfirm = (time) => {
-    console.warn("A time has been picked: ", time);
+    console.warn("A time has been picked: ", time.time);
     hideTimePicker();
   };
 
