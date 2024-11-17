@@ -15,7 +15,6 @@ const Example = () => {
   };
 
   const handleConfirm = (selectedTime) => {
-    console.warn("A time has been picked: ", selectedTime);
     setTime(selectedTime); 
     hideTimePicker();
   };
@@ -34,7 +33,7 @@ const Example = () => {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "lightblue"  }}>
       <Button title="Set Time to turn off mobile data" onPress={showTimePicker} />
       <DateTimePickerModal
         isVisible={isTimePickerVisible}
