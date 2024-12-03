@@ -1,6 +1,18 @@
 import { useState } from "react";
 import { Button, View, Text } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { NativeModules } from 'react-native';
+const { MobileDataModule } = NativeModules;
+
+const toggleMobileData = (enable) => {
+    MobileDataModule.toggleMobileData(enable, (error, success) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log(success);
+        }
+    });
+};
 
 const Example = () => {
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
